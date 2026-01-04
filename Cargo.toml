@@ -1,6 +1,6 @@
 [package]
 name = "embeddenator-interop"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 authors = ["Tyler Zervas <tz-dev@vectorweight.com>"]
 description = "Kernel interop and system integration for Embeddenator"
@@ -13,8 +13,7 @@ categories = ["os"]
 default = []
 
 [dependencies]
-# TODO: Add embeddenator-vsa dependency once git tags are set up
-# embeddenator-vsa = { git = "https://github.com/tzervas/embeddenator-vsa", tag = "v0.1.0" }
+embeddenator-vsa = { git = "https://github.com/tzervas/embeddenator-vsa", tag = "v0.1.0" }
 
 [dev-dependencies]
 proptest = "1.0"
