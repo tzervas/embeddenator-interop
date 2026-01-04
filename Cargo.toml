@@ -1,6 +1,6 @@
 [package]
 name = "embeddenator-interop"
-version = "0.1.1"
+version = "0.2.0"
 edition = "2021"
 authors = ["Tyler Zervas <tz-dev@vectorweight.com>"]
 description = "Kernel interop and system integration for Embeddenator"
@@ -13,7 +13,8 @@ categories = ["os"]
 default = []
 
 [dependencies]
-embeddenator-vsa = { git = "https://github.com/tzervas/embeddenator-vsa", tag = "v0.1.0" }
+embeddenator-vsa = { path = "../embeddenator-vsa" }
+embeddenator-fs = { path = "../embeddenator-fs" }
 
 [dev-dependencies]
 proptest = "1.0"
