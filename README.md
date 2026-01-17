@@ -8,15 +8,14 @@
 
 ## Status
 
-**Phase 2B Component Migration** - ✅ 100% COMPLETE
+**Phase 2B Component Migration** - Core functionality complete.
 
-Full implementation with:
-- ✅ Comprehensive format conversion (JSON, bincode, text)
+Implementation includes:
+- ✅ Format conversion (JSON, bincode, text)
 - ✅ C/C++ FFI bindings with automated header generation
-- ✅ Python bindings (PyO3)
-- ✅ Full envelope compression support (Zstd, LZ4)
+- ✅ Python bindings (PyO3) - requires `python` feature
+- ✅ Envelope compression support (Zstd, LZ4)
 - ✅ High-level adapter layers
-- ✅ Automated C header generation with cbindgen
 
 ## Features
 
