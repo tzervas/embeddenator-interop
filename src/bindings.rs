@@ -37,6 +37,13 @@ pub struct PySparseVec {
 }
 
 #[cfg(feature = "python")]
+impl Default for PySparseVec {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
+#[cfg(feature = "python")]
 #[pymethods]
 impl PySparseVec {
     /// Create a new empty SparseVec
@@ -104,7 +111,7 @@ impl PySparseVec {
     pub fn to_bytes<'py>(&self, py: Python<'py>) -> PyResult<Bound<'py, PyBytes>> {
         let bytes = bincode::serialize(&self.inner)
             .map_err(|e| PyErr::new::<pyo3::exceptions::PyValueError, _>(e.to_string()))?;
-        Ok(PyBytes::new_bound(py, &bytes))
+        Ok(PyBytes::new(py, &bytes))
     }
 
     /// Deserialize from bytes (bincode)
@@ -134,6 +141,13 @@ impl PySparseVec {
 #[pyclass(name = "VSAConfig")]
 pub struct PyVSAConfig {
     inner: ReversibleVSAConfig,
+}
+
+#[cfg(feature = "python")]
+impl Default for PyVSAConfig {
+    fn default() -> Self {
+        Self::new()
+    }
 }
 
 #[cfg(feature = "python")]
@@ -205,7 +219,7 @@ impl PyVSAConfig {
         path: Option<&str>,
     ) -> PyResult<Bound<'py, PyBytes>> {
         let decoded = vec.inner.decode_data(&self.inner, path, expected_size);
-        Ok(PyBytes::new_bound(py, &decoded))
+        Ok(PyBytes::new(py, &decoded))
     }
 
     /// Serialize to JSON
@@ -286,7 +300,7 @@ mod tests {
     fn test_py_encode_decode() {
         use pyo3::Python;
 
-        Python::with_gil(|py| {
+        Python::attach(|py| {
             let config = PyVSAConfig::new();
             let data = b"Hello from Python!";
 

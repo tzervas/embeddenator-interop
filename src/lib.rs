@@ -141,8 +141,8 @@ mod integration_tests {
 
         // Verify operations work
         let vec2 = backend.encode_data(b"other", &config, None);
-        let bundled = backend.bundle(&vec, &vec2);
-        let bound = backend.bind(&vec, &vec2);
+        let _bundled = backend.bundle(&vec, &vec2);
+        let _bound = backend.bind(&vec, &vec2);
         let similarity = backend.cosine(&vec, &vec2);
 
         assert!(similarity >= 0.0 && similarity <= 1.0);

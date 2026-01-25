@@ -2,6 +2,9 @@ fn main() {
     // Only generate C bindings when the c-bindings feature is enabled
     #[cfg(feature = "c-bindings")]
     {
+        use std::env;
+        use std::path::PathBuf;
+
         let crate_dir = env::var("CARGO_MANIFEST_DIR").unwrap();
         let output_dir = PathBuf::from(&crate_dir).join("include");
 
