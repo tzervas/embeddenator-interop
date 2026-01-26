@@ -145,6 +145,6 @@ mod integration_tests {
         let _bound = backend.bind(&vec, &vec2);
         let similarity = backend.cosine(&vec, &vec2);
 
-        assert!(similarity >= 0.0 && similarity <= 1.0);
+        assert!((0.0..=1.0).contains(&similarity));
     }
 }

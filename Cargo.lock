@@ -221,11 +221,12 @@ dependencies = [
 
 [[package]]
 name = "embeddenator-fs"
-version = "0.22.0"
+version = "0.23.0"
 dependencies = [
  "arc-swap",
  "bincode",
  "clap",
+ "embeddenator-io",
  "embeddenator-retrieval",
  "embeddenator-vsa",
  "libc",
@@ -254,7 +255,7 @@ dependencies = [
 
 [[package]]
 name = "embeddenator-io"
-version = "0.20.0"
+version = "0.21.0"
 dependencies = [
  "bincode",
  "lz4_flex",
@@ -275,7 +276,7 @@ dependencies = [
 
 [[package]]
 name = "embeddenator-vsa"
-version = "0.20.1"
+version = "0.21.0"
 dependencies = [
  "libc",
  "rand",
