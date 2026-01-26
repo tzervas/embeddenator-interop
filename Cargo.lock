@@ -239,7 +239,7 @@ dependencies = [
 
 [[package]]
 name = "embeddenator-interop"
-version = "0.21.0"
+version = "0.22.0"
 dependencies = [
  "bincode",
  "cbindgen",
