@@ -541,6 +541,8 @@ mod tests {
         let manifest = Manifest {
             files: Vec::new(),
             total_chunks: 0,
+            chunk_size: 4096,
+            holographic: false,
         };
 
         let path = dir.path().join("manifest.json");
