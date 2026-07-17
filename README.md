@@ -1,5 +1,10 @@
 # embeddenator-interop
 
+<!-- FLEET-BADGES:BEGIN -->
+[![CI](https://github.com/tzervas/embeddenator-interop/actions/workflows/fleet-ci.yml/badge.svg?branch=main)](https://github.com/tzervas/embeddenator-interop/actions/workflows/fleet-ci.yml?query=branch%3Amain)
+[![Security](https://github.com/tzervas/embeddenator-interop/actions/workflows/fleet-security.yml/badge.svg?branch=main)](https://github.com/tzervas/embeddenator-interop/actions/workflows/fleet-security.yml?query=branch%3Amain)
+<!-- FLEET-BADGES:END -->
+
 **Interoperability layer for Embeddenator**: format conversions, FFI bindings, and language integrations.
 
 **Independent component** extracted from the Embeddenator monolithic repository. Part of the [Embeddenator workspace](https://github.com/tzervas/embeddenator).
