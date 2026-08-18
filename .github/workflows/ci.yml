@@ -4,12 +4,54 @@ on:
   push:
     branches: [main, develop]
   pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  checks: write
+
+env:
+  CARGO_TERM_COLOR: always
 
 jobs:
   ci:
-    uses: tzervas/.github-workflows/.github/workflows/reusable-ci.yml@v1
-    with:
-      rust-version: '1.84'
-      run-tests: true
-      run-benchmarks: false
-      cache-key-prefix: 'embeddenator-interop'
+    name: Build and Test
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Clone path-dependency siblings
+        run: |
+          set -euo pipefail
+          cd ..
+          # interop -> vsa, fs, io
+          # fs -> vsa, retrieval, io
+          # retrieval -> vsa, fs
+          for repo in embeddenator-vsa embeddenator-fs embeddenator-io embeddenator-retrieval; do
+            if [ ! -d "$repo" ]; then
+              git clone --depth 1 "https://github.com/tzervas/$repo.git"
+            fi
+          done
+
+      - name: Set up Rust
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt, clippy
+
+      - name: Rust cache
+        uses: Swatinem/rust-cache@v2
+        with:
+          prefix-key: embeddenator-interop
+
+      - name: Check formatting
+        run: cargo fmt --check
+
+      - name: Clippy (default features)
+        run: cargo clippy --all-targets -- -D warnings
+
+      - name: Build (default features)
+        run: cargo build
+
+      - name: Test (default features)
+        run: cargo test
